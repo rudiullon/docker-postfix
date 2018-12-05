@@ -13,7 +13,7 @@ TLS and OpenDKIM support are optional.
 1. Build image
 
 	```bash
-	$ sudo docker pull catatnight/postfix
+	$ sudo docker pull rudiullon/postfix
 	```
 
 ## Usage
