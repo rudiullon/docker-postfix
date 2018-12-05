@@ -128,3 +128,23 @@ cat >> /etc/opendkim/SigningTable <<EOF
 EOF
 chown opendkim:opendkim $(find /etc/opendkim/domainkeys -iname *.private)
 chmod 400 $(find /etc/opendkim/domainkeys -iname *.private)
+
+#############
+#  POSTFIX Tuning
+#############
+# /etc/postfix/main.cf
+postconf -e default_process_limit = 200
+postconf -e smtpd_client_connection_count_limit = 100
+postconf -e smtpd_client_connection_rate_limit = 0
+postconf -e smtpd_client_message_rate_limit = 0
+postconf -e smtpd_client_recipient_rate_limit = 0
+postconf -e smtpd_client_auth_rate_limit = 0
+postconf -e smtpd_error_sleep_time = 0
+postconf -e in_flow_delay=0
+postconf -e smtpd_policy_service_try_limit=1
+postconf -e queue_run_delay=1000
+postconf -e maximal_queue_lifetime=1
+postconf -e bounce_queue_lifetime=1
+postconf -e qmgr_message_recipient_limit=10000
+
+postfix reload
