@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t rudiullon/docker-postfix .
+docker build -t rudiullon/postfix .
