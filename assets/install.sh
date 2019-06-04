@@ -23,7 +23,8 @@ EOF
 cat >> /opt/postfix.sh <<EOF
 #!/bin/bash
 service postfix start
-########## tail -F /var/log/mail.log
+RUN touch /var/log/mail.log
+tail -F /var/log/mail.log
 EOF
 chmod +x /opt/postfix.sh
 postconf -e myhostname=$maildomain
