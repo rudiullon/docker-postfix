@@ -68,6 +68,12 @@ if [[ -n "$(find /etc/postfix/certs -iname *.crt)" && -n "$(find /etc/postfix/ce
   postconf -P "submission/inet/smtpd_recipient_restrictions=permit_sasl_authenticated,reject_unauth_destination"
 fi
 
+cat >> /etc/postfix/main.cf <<EOF
+
+smtp_tls_security_level = may
+EOF
+
+
 #############
 #  opendkim
 #############
